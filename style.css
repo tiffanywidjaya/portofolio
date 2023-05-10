@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(66, 65, 65);
+}
+
+.about-container {
+    width: 100%;
+    padding: 50px 8%;
+}
+
+.image-section {
+    grid-area: imageSect;
+    border: 1px solid white;
+}
+
+.info-section {
+    grid-area: infoSect;
+}
+
+.skill-section {
+    grid-area: skillSect;
+}
+
+.about-container .about-content {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-gap: 70px;
+    grid-template-areas: 'imageSect infoSect'
+                         'skillSect skillSect';
+}
+
+.about-content .image-section {
+    position: relative;
+    min-width: 300px;
+    height: 380px;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.about-content .image-section::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    outline: 3px solid rgb(74, 113, 228);
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+}
+
+.info-section h1 {
+    color:rgb(205, 218, 255);
+    font-size: 30px;
+    font-family: Poppins;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.info-section h1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 110%;
+    left: 0;
+    background-color: rgb(56, 93, 206);
+}
+
+.info-section h1::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 3px;
+    top: calc(110%, 1px);
+    left: 0px;
+    background-color:rgb(45, 69, 139);
+}
+
+.info-section h2 {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(79, 102, 172);
+    padding: 14px 0px 15px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.info-section p {
+    color: rgb(148, 148, 148);
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: justify;
+    padding-bottom: 8px;
+}
+
+.personal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 20px;
+    margin-top: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #555;
+}
+
+.personal-info div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.personal-info div span {
+    color: rgb(167, 167, 167);
+    letter-spacing: 1px;
+}
+
+.info-section button {
+    min-width: 150px;
+    padding: 8px 18px;
+    border: 1px solid rgb(74, 113, 228);
+    border-radius: 25px;
+    font-size: 18px;
+    background-color: rgb(56, 56, 56);
+    color:rgb(74, 113, 228);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s;
+    margin-top: 20px;
+}
+
+.info-section button:hover {
+    color: rgb(56, 93, 206);
+    border-color: rgb(74, 113, 228);
+}
+
+.skill-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 80px;
+}
+
+.skill-section .subject {
+    font-size: 17px;
+    font-weight: thin;
+    color: rgb(205, 218, 255);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 16px;
+    background-color: rgb(8, 17, 43);
+    padding: 4px 6px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #444;
+    border-radius: 15px;
+}
+
+.progress-line {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(56, 93, 206);
+    box-shadow: -1px -1px 2px #222,
+                1px 1px 2px #111111;
+    border-radius: 15px;
+}
+
+.progress-line::after {
+    position: absolute;
+    content: attr(value);
+    top: -35px;
+    right: 0px;
+    transform: translateX(-50%);
+    color: rgb(8, 17, 43);
+    font-size: 17px;
+}
+
+@media(max-width: 1068px) {
+    .about-container .about-content {
+        grid-template-areas: 'imageSect skillSect'
+                             'infoSect skillSect';
+    }
+    .skill-section {
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+}
+
+@media(max-width: 868px) {
+    .about-container .about-content {
+        grid-template-areas: 'imageSect skillSect'
+                             'infoSect skillSect'
+                             'skillSect skillSect';
+    }
+}
+
+@media(max-width: 668px) {
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+}
